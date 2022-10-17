@@ -4,11 +4,21 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>HTML 5 Boilerplate</title>
+		<link href="style.css" rel="stylesheet">
+		<title>Paykeeper</title>
 	</head>
-	<style></style>
 	<body>
-		<script></script>
+		<div id="app" :class={loaded:data_is_loaded}>
+			<h2>Todo:</h2>
+			<ol class='tasks'>
+				<task-element v-for='task in todos' :task='task'></task-element>
+			</ol>
+			<h3>Add new task:</h3>
+			<input type='text'/>
+			<button>Add task</button>
+		</div>
+		<script src="vue2dev.js"></script>
+		<script src="script.js"></script>
 	</body>
 </html>
 
