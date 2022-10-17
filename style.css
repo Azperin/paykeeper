@@ -26,6 +26,10 @@ div.loaded ol.tasks li span {
 	opacity: 1;
 }
 
+div.loaded ol.tasks li input:checked ~ span {
+	opacity: .5;
+}
+
 h2 {
 	font-weight: bold;
 	margin-bottom: 15px;
