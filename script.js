@@ -5,6 +5,7 @@ Vue.component('task-element',{
 		var d = {seconds_elapsed: null}; 
 		return d;
 	},
+	
 	template : `
 <li>
 	<label :class='{islong:task.islong}'>
@@ -15,6 +16,11 @@ Vue.component('task-element',{
 		<small>{{ seconds_elapsed }}</small>
 	</label>
 </li>`,
+	mounted() {
+		setInterval(() => {
+			this.seconds_elapsed++;
+		}, 1000);
+	},
 });
 
 new Vue({
