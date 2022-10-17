@@ -1,5 +1,5 @@
 Vue.component('task-element',{
-	props : ['task', 'toggle'],
+	props : ['task'],
 	
 	data : function () {
 		var d = {seconds_elapsed: null}; 
@@ -10,9 +10,10 @@ Vue.component('task-element',{
 <li>
 	<label :class='{islong:task.islong}'>
 		<input type="checkbox"
-			v-on:change="toggle(task)"
+			v-on:change="$emit('toggle', task)"
 			v-bind:checked="task.done">
 		<span>{{ task.text }}</span>
+		<button :disabled="!task.done" @click="$emit('taskremove', task)">X</button>
 		<small>{{ seconds_elapsed }}</small>
 	</label>
 </li>`,
@@ -50,5 +51,9 @@ new Vue({
 			});
 			this.newTaskName = '';
 		},
+		deleteTask(task) {
+			if (!task.done) return;
+			this.todos = this.todos.filter(todo => todo !== task);
+		}
 	},
 });

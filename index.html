@@ -11,7 +11,7 @@
 		<div id="app" :class={loaded:data_is_loaded}>
 			<h2>Todo:</h2>
 			<ol class='tasks'>
-				<task-element v-for='task in todos' :task='task' :toggle="toggle"></task-element>
+				<task-element v-for='(task, idx) in todos' :key="idx" :task='task' @toggle='toggle' @taskremove='deleteTask'></task-element>
 			</ol>
 			<h3>Add new task:</h3>
 			<input v-model="newTaskName" type='text'/>
