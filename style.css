@@ -24,6 +24,7 @@ label.islong span::before {
 
 div.loaded ol.tasks li span {
 	opacity: 1;
+	transition: opacity 5s;
 }
 
 div.loaded ol.tasks li input:checked ~ span {
