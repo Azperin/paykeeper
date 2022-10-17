@@ -35,6 +35,60 @@ h2 {
 	font-weight: bold;
 	margin-bottom: 15px;
 }
+textarea, input, button { outline: none; }
+
+div.loaded ol.tasks button {
+	margin: 2px;
+	background-color: rgb(255, 178, 78);
+	border: 0px;
+	border-radius: 1px;
+	cursor: pointer;
+}
+
+button.activeBtn, button.disabledBtn {
+	width: 112px;
+	height: 32px;
+	text-align: center;
+	border: 0px;
+	text-decoration: none;
+	margin: 5px;
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-shadow: 0px -1px 2px rgb(0, 0, 0);
+	border-radius: 4px;
+}
+
+button.activeBtn {
+	background-color: rgb(255, 178, 78);
+	cursor: pointer;
+}
+
+button.activeBtn:hover {
+	background-color: rgb(255, 145, 0);
+	cursor: pointer;
+}
+
+button.disabledBtn {
+	background-color: rgb(156, 156, 156);
+	cursor: not-allowed;
+}
+
+input[type="text"] {
+	width: 240px;
+	height: 26px;
+	border: 1px solid rgb(190, 190, 190);
+	border-radius: 4px;
+}
+
+input[type="text"].correct {
+	border-color:rgb(37, 185, 0);
+}
+
+input[type="text"].incorrect {
+	border-color:rgb(255, 25, 25);
+}
 
 @media screen and (min-width: 580px) {
 	.tasks {

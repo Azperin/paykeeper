@@ -15,7 +15,7 @@
 			</ol>
 			<h3>Add new task:</h3>
 			<input v-model="newTaskName" type='text'/>
-			<button @click="addTask">Add task</button>
+			<button :class="{ [newTaskName.length < 10 ? 'disabledBtn':'activeBtn']: true }" @click="addTask">Add task</button>
 		</div>
 		<script src="vue2dev.js"></script>
 		<script src="script.js"></script>
