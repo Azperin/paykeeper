@@ -1,5 +1,5 @@
 Vue.component('task-element',{
-	props : ['task'],
+	props : ['task', 'toggle'],
 	
 	data : function () {
 		var d = {seconds_elapsed: null}; 
@@ -27,12 +27,22 @@ new Vue({
 			{ text: "Play around in JSFiddle", done: true, islong: false},
 			{ text: "Build something awesome", done: true, islong: true}
 		],
+		newTaskName: '',
 		data_is_loaded: true,
 	},
 
 	methods: {
-		toggle: function(todo){
-			todo.done = !todo.done
+		toggle(todo) {
+			todo.done = !todo.done;
+		},
+		addTask() {
+			if (this.newTaskName.length < 10) return;
+			this.todos.push({
+				text: this.newTaskName,
+				done: false,
+				islong: false, // каким параметром определяется это свойство ?
+			});
+			this.newTaskName = '';
 		},
 	},
 });

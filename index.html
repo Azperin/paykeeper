@@ -11,11 +11,11 @@
 		<div id="app" :class={loaded:data_is_loaded}>
 			<h2>Todo:</h2>
 			<ol class='tasks'>
-				<task-element v-for='task in todos' :task='task'></task-element>
+				<task-element v-for='task in todos' :task='task' :toggle="toggle"></task-element>
 			</ol>
 			<h3>Add new task:</h3>
-			<input type='text'/>
-			<button>Add task</button>
+			<input v-model="newTaskName" type='text'/>
+			<button @click="addTask">Add task</button>
 		</div>
 		<script src="vue2dev.js"></script>
 		<script src="script.js"></script>
