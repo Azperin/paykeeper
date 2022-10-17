@@ -2,8 +2,9 @@ Vue.component('task-element',{
 	props : ['task'],
 	
 	data : function () {
-		var d = {seconds_elapsed: null}; 
-		return d;
+		return {
+			currentDate: Date.now(),
+		};
 	},
 	
 	template : `
@@ -14,12 +15,17 @@ Vue.component('task-element',{
 			v-bind:checked="task.done">
 		<span>{{ task.text }}</span>
 		<button :disabled="!task.done" @click="$emit('taskremove', task)">X</button>
-		<small>{{ seconds_elapsed }}</small>
+		<small>{{ timeElapsed }}</small>
 	</label>
 </li>`,
+	computed: {
+		timeElapsed() {
+			return Math.round((this.currentDate - this.task.date) / 1000);
+		},
+	},
 	mounted() {
 		setInterval(() => {
-			this.seconds_elapsed++;
+			this.currentDate = Date.now();
 		}, 1000);
 	},
 });
@@ -29,10 +35,10 @@ new Vue({
 
 	data: {
 		todos: [
-			{ text: "Learn JavaScript", done: false, islong: true},
-			{ text: "Learn Vue", done: false, islong: false},
-			{ text: "Play around in JSFiddle", done: true, islong: false},
-			{ text: "Build something awesome", done: true, islong: true}
+			{ text: "Learn JavaScript", done: false, islong: true, date: Date.now(), },
+			{ text: "Learn Vue", done: false, islong: false, date: Date.now(), },
+			{ text: "Play around in JSFiddle", done: true, islong: false, date: Date.now(), },
+			{ text: "Build something awesome", done: true, islong: true, date: Date.now(), }
 		],
 		newTaskName: '',
 		data_is_loaded: true,
@@ -48,6 +54,7 @@ new Vue({
 				text: this.newTaskName,
 				done: false,
 				islong: false, // каким параметром определяется это свойство ?
+				date: Date.now(),
 			});
 			this.newTaskName = '';
 		},
